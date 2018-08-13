@@ -1,0 +1,30 @@
+﻿@model VideoMovies.Models.RandomMovieViewModel
+@{
+    ViewBag.Title = "Random";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Lets assign class dynamically -->
+
+@{ 
+    var classname = Model.Customwers.Count > 5 ? "popular" : null;
+}
+
+<h2 class="@classname">@Model.Movie.Name</h2>
+@if (Model.Customwers.Count == 0)
+{
+    <p>No one has rented this movie before.</p>
+}
+else
+{
+    <ul>
+        @foreach (var customer in Model.Customwers)
+        {
+            <li>
+                @customer.Name
+            </li>
+        }
+    </ul>
+}
+
+
